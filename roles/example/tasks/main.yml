@@ -1,0 +1,9 @@
+- name: Run date command
+  command: date
+
+- include: ./../../../library/slack/tasks/main.yml
+  run_once: true
+  vars:
+    - channel: "#ansible-example"
+    - msg: "completed!"
+    - username: "ansible-role"

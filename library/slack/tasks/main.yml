@@ -1,0 +1,14 @@
+---
+
+- name: Send notification message via Slack
+  local_action:
+    module: slack
+    attachments: "{{ parse | default('none') }}"
+    channel: "{{ channel | default('#ansible-notification') }}"
+    color: "{{ color | default('normal') }}"
+    icon_emoji: "{{ icon_emoji | default(':sunglasses:') }}"
+    link_names: "{{ link_names | default('yes') }}"
+    msg: "{{ msg | default('message from ansible') }}"
+    parse: "{{ parse | default('none') }}"
+    token: "{{ lookup('file', '{{ playbook_dir }}/../.secret/slack_token') }}"
+    username: "{{ username | default('Ansible on {{ inventory_hostname }}') }}"

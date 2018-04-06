@@ -1,0 +1,14 @@
+---
+
+- name: apply common configuration to all nodes
+  hosts: all
+  become: true
+  become_user: root
+
+  tasks:
+    - include: ./../library/slack/tasks/main.yml
+      run_once: true
+      vars:
+        - channel: "#ansible-example"
+        - color: "good"
+        - msg: "hello"
