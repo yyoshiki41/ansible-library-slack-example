@@ -9,5 +9,5 @@
     link_names: "{{ link_names | default(1) }}"
     msg: "{{ msg | default('message from ansible') }}"
     parse: "{{ parse | default('none') }}"
-    token: "{{ slack.token }}"
+    token: "{{ lookup('env', 'SLACK_TOKEN') }}"
     username: "{{ username | default('Ansible') }}"
